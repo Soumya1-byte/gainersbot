@@ -24,5 +24,5 @@ jobs:
       - name: Run script
         run: node script.js
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.8148897770:AAESvpilPGeHbEYVfDYk0VeIl2AS2bTIpyY}}
-          TELEGRAM_CHAT_ID: ${{ secrets.7092410016 }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
