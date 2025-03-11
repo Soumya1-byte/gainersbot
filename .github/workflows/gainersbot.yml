@@ -1,1 +1,25 @@
+name: Crypto Gainers Bot
+
+on:
+  schedule:
+    - cron: "0 */5 * * *"  # Runs every 5 hours
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run script
+        run: node script.js
 
