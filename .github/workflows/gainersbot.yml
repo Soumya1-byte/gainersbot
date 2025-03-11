@@ -3,11 +3,12 @@ name: Crypto Gainers Bot
 on:
   schedule:
     - cron: "0 */5 * * *"  # Runs every 5 hours
-  workflow_dispatch:  # Allows manual triggering
+  workflow_dispatch:  # Allows manual execution from GitHub Actions
 
 jobs:
-  run-bot:
+  run-script:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -15,11 +16,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18
 
       - name: Install dependencies
         run: npm install
 
       - name: Run script
         run: node script.js
-
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.8148897770:AAESvpilPGeHbEYVfDYk0VeIl2AS2bTIpyY}}
+          TELEGRAM_CHAT_ID: ${{ secrets.7092410016 }}
