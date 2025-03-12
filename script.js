@@ -1,8 +1,7 @@
 const axios = require('axios');
 
-const TELEGRAM_BOT_TOKEN = '8148897770:AAESvpilPGeHbEYVfDYk0VeIl2AS2bTIpyY'; // Replace with actual token
-const TELEGRAM_CHAT_ID = '7092410016';
-; // Replace with actual chat ID
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
 async function getTopGainers() {
     try {
@@ -29,7 +28,7 @@ async function sendTelegramMessage(message) {
     try {
         const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
         const response = await axios.post(url, {
-            chat_id: 7092410016,  // Use your actual Chat ID
+            chat_id: TELEGRAM_CHAT_ID,  // Now using the environment variable
             text: message,
             parse_mode: "HTML"  // Try "HTML" instead of "Markdown"
         });
@@ -39,7 +38,6 @@ async function sendTelegramMessage(message) {
         console.error("Error sending message:", error.response ? error.response.data : error.message);
     }
 }
-
 
 // Run the function immediately
 getTopGainers();
